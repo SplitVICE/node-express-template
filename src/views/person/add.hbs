@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="h1">Create a new person registry</div>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name of the registry">
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" rows="4" placeholder="Notes of the registry"></textarea>
+            </div>
+            <label for="address" class="form-label">Addresses</label>
+            <div class="input-group mb-3">
+                <input id="address" type="text" class="form-control" placeholder="Write a new address">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" id="btn_add_address" type="button">Add</button>
+                </div>
+            </div>
+            <div id="address_list">
+            </div>
+            <hr>
+            <label for="contact_info" class="form-label">Contact info</label>
+            <div class="mb-3">
+                <input id="contact_info_type" type="text" class="form-control"
+                    placeholder="Type of address. Example: Email.">
+                <input id="contact_info_detail" type="text" class="form-control"
+                    placeholder="Address detail. Example: joedoe@mail.com">
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-sm" id="btn_add_contactInfo" type="button">Add contact info</button>
+            </div>
+            <div id="contact_info_list">
+            </div>
+            <hr>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="btn_add" type="button">Save new registry</button>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+            <div class="h4">Card view</div>
+            <div id="card_example"></div>
+
+        </div>
+    </div>
+</div>
+<div id="app">
+    {{titulo}}
+</div>
+<script src="../js/vue.2-6-12.min.js"></script>
+<script src="../js/sweetalert2.alerts.js"></script>
+<script src="../js/person/add.js"></script>

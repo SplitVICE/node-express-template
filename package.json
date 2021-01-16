@@ -1,0 +1,34 @@
+{
+  "name": "nodejs-vice-stack",
+  "version": "1.0.0",
+  "description": "NodeJS web project template.",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "test": "mocha ./src/test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://10.172.61.118:3000/VICE/NodeJS-VICE-Stack"
+  },
+  "keywords": [
+    "nodejs",
+    "vice",
+    "template"
+  ],
+  "author": "VICE",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.8"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}

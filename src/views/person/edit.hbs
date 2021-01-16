@@ -1,0 +1,23 @@
+<div class="container">
+    <br>
+    <div class="h3">Editing registry</div>
+
+    <label for="exampleDataList" class="form-label">Name</label>
+    <input class="form-control" type="text" id="exampleDataList" value="{{response.document.name}}" required>
+    <br>
+    <label for="exampleDataList" class="form-label">Notes</label>
+    <textarea name="" id="" rows="4" class="form-control"
+        placeholder="Write notes for this registry">{{response.document.note}}</textarea>
+    <br>
+    <label for="exampleDataList" class="form-label">Addresses</label>
+
+    <div class="input-group mb-3">
+        <input id="address" type="text" class="form-control" placeholder="Address" autofocus>
+        <div class="input-group-append">
+            <button class="btn btn-outline-danger" id="btn_search" type="button">Delete</button>
+        </div>
+    </div>
+
+    <a href="javascript:void(0);">Add new address</a>
+
+</div>
