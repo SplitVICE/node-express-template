@@ -4,7 +4,7 @@ const personModel = require("../model/person.model");
 /**
  * -------------------------------------------------------
  * Plain JavaScript object conversion.
- * Handlebars requires plain JavaScript objects to render them properly 
+ * Handlebars requires plain JavaScript objects to render them properly
  * on HTML outputs. Mongoose's module.find() returns a Mongoose object.
  * To return a plain JavaScript object you can use module.find().lean().
  * -------------------------------------------------------
@@ -85,7 +85,7 @@ personController.add = async params => {
  * @param { Object } filter MongoDB filter alike to find the document to update.
  * @param { Object } doc contains the fields to update on the registry.
  * Recommended filter:
- * { _id: person_document_id } 
+ * { _id: person_document_id }
  */
 personController.edit = async (filter, doc) => {
     const result = await personModel.updateOne(filter, doc);
@@ -158,7 +158,7 @@ personController.edit_contactInfo = async (filter, contactInfo) => {
 
 /**
  * @param {*} filter MongoDB filter syntax to find required document.
- * @param {*} contactInfo 
+ * @param {*} contactInfo
  */
 personController._delete_contactInfo = async (filter, contactInfo) => {
     const result = await personModel.updateOne(filter, { $pull: { "contact_info": contactInfo } });
@@ -240,7 +240,7 @@ personController.handlebars_helpers = {
 };
 
 personController.handlebars_helpers_edit = {
-    
+
 };
 
 /**
