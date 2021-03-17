@@ -10,8 +10,8 @@ const env = require('./config/env');
 const app = express();
 
 // *** Server settings.
+app.set('port', env.PORT || 4000); // Use .evn set PORT or port 4000 if does not exist.
 app.set('views', path.join(__dirname, 'views')); // Views folder set.
-app.set('port', env.PORT || 4000);
 app.engine('.hbs', exphbs({
   defaultLayout: "main",
   extname: '.hbs',
@@ -20,8 +20,8 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // *** Middlewares.
-app.use(express.urlencoded({ extended: false })); // No complex files understanding like images.
 app.use(express.static(path.join(__dirname, 'public'))); // Public files folder path route set.
+app.use(express.urlencoded({ extended: false })); // No complex files understanding like images.
 app.use(express.json()); // Server understands JSON.
 app.use(function (req, res, next) { // Accepts API requests from selected domains.
   res.header("Access-Control-Allow-Origin", "*");

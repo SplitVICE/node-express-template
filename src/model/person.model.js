@@ -18,15 +18,4 @@ const person = new Schema({
     note: { type: String, required: false }
 });
 
-/**
- * JavaScript object notation equivalent:
-{
- _id: String -> MongoDB object,
- name: String,
- addresses: [String],
- contact_info: [{ type: String, detail: String }]
- note: String
-}
-*/
-
 module.exports = model('person', person);

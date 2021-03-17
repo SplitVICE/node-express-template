@@ -1,23 +1,10 @@
 const express = require("express");
 const router = express.Router();
-var path = require('path');
 
-const { adminLogin } = require('../controller/admin.controller');
+// Route controller
+const controller_route_admin = require('../controller/controller.route.admin');
 
-router.post('/admin/api/login', (req, res) => { // Admin login action.
-    const result = adminLogin(req.body);
-    if (result.status == "success" && result.description == "password correct") {
-        req.session.adminAuthenticated = true;
-        res.json(result);
-    } else {
-        req.session.adminAuthenticated = false;
-        res.json(result);
-    }
-});
-
-router.get('/admin/api/logout', (req, res) => {
-    delete req.session.adminAuthenticated;
-    res.redirect("/");
-});
+router.post('/admin/api/login', controller_route_admin.admin_api_login);
+router.get('/admin/api/logout', controller_route_admin.admin_api_logout);
 
 module.exports = router;

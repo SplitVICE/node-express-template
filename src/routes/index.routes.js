@@ -1,18 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const path = require("path");
-const env = require("../config/env");
 
-router.get('/', (req, res) => {
-    const hbsParams = {
-        adminPassword: env.ADMIN_PASSWORD,
-        adminAuthenticated: req.session.adminAuthenticated
-    };
-    res.render("index", { hbsParams: hbsParams });
-});
+// Route controller
+const controller_route_index = require('../controller/controller.route.index');
 
-router.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/html/about.html"));
-});
+router.get('/', controller_route_index.root);
+router.get('/about', controller_route_index.about);
 
 module.exports = router;

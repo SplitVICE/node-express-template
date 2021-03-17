@@ -1,12 +1,12 @@
 {
   "name": "nodejs-vice-stack",
-  "version": "1.0.0",
+  "version": "0.0.0-dev",
   "description": "NodeJS web project template.",
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "test": "mocha ./src/test/*.js"
+    "test_person": "mocha ./src/test/person.js"
   },
   "repository": {
     "type": "git",
