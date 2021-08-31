@@ -2,9 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 // Route controller
-const controller_route_admin = require('../controller/controller.route.admin');
+const controller = require('../controller/controller.route.admin');
 
-router.post('/admin/api/login', controller_route_admin.admin_api_login);
-router.get('/admin/api/logout', controller_route_admin.admin_api_logout);
+// API ROUTES
+
+router.post('/api/admin/login', controller.api_admin_login);
+router.get('/api/admin/isAuth', controller.api_admin_isAuth);
+router.get('/api/admin/logout', controller.adi_admin_logout);
 
 module.exports = router;

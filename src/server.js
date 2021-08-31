@@ -1,49 +1,32 @@
-// *** Module requirements.
 const express = require('express');
-const session = require('express-session');
+const express_session = require('express-session');
 const path = require('path');
-const exphbs = require('express-handlebars');
-const cookieParser = require('cookie-parser')
 const env = require('./config/env');
+const cors = require('cors');
 
-// *** Initializations.
 const app = express();
 
-// *** Server settings.
-app.set('port', env.PORT || 4000); // Use .evn set PORT or port 4000 if does not exist.
-app.set('views', path.join(__dirname, 'views')); // Views folder set.
-app.engine('.hbs', exphbs({
-  defaultLayout: "main",
-  extname: '.hbs',
-  helpers: require("./libs/handlebars_helpers")
-}));
-app.set('view engine', '.hbs');
+// SERVER SETTINGS
+app.set('port', env.PORT); // Use .evn set PORT or port 4000 if does not exist
 
-// *** Middlewares.
-app.use(express.static(path.join(__dirname, 'public'))); // Public files folder path route set.
-app.use(express.urlencoded({ extended: false })); // No complex files understanding like images.
-app.use(express.json()); // Server understands JSON.
-app.use(function (req, res, next) { // Accepts API requests from selected domains.
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-const sessionSettings = {
+// MIDDLEWARES
+app.use(express.static(path.join(__dirname, 'public'))); // public folder
+app.use(express.json()); // Server understands JSON
+app.use(cors()); // accepts cors from all domains
+const express_session_settings = {
   secret: env.EXPRESS_SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
+  resave: false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
+  saveUninitialized: false, // makes changes on session even though if the session does not exist yet; so it is created
   cookie: {
-    maxAge: 600000, // milliseconds.
-    secure: false, // Work only on HTTPS.
-    httpOnly: true // Only readable via HTTP/S protocol.
+    maxAge: 600000, // milliseconds. 600000 => 10 minutes
+    secure: false, // work only on HTTPS
+    httpOnly: true // Only readable via HTTP/S protocol. true is recommended
   }
 }
-app.use(session(sessionSettings));
-app.use(cookieParser());
+app.use(express_session(express_session_settings));
 
-// *** Routes.
+// ROUTES
 app.use(require('./routes/index.routes'));
-app.use(require('./routes/person.routes'));
 app.use(require('./routes/admin.routes'));
 
 module.exports = app;

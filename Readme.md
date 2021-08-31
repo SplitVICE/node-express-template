@@ -1,1 +1,0 @@
-# A NodeJS + Express + MongoDB template web application

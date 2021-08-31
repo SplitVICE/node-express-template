@@ -1,17 +1,13 @@
-const env = require("../config/env");
 const path = require("path");
-const controller_route_index = {};
+const constants = require('../config/constants');
+const controller = {};
 
-controller_route_index.root = (req, res) =>{
-    const hbsParams = {
-        adminPassword: env.ADMIN_PASSWORD,
-        adminAuthenticated: req.session.adminAuthenticated
-    };
-    res.render("index", { hbsParams: hbsParams });
+controller.root = (req, res) => {
+    res.sendFile(constants.views.index);
 };
 
-controller_route_index.about = (req, res) =>{
-    res.sendFile(path.join(__dirname, "../public/html/about.html"));
+controller.about = (req, res) => {
+    res.sendFile(constants.views.about);
 };
 
-module.exports = controller_route_index;
+module.exports = controller;

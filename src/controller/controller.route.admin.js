@@ -1,20 +1,23 @@
-const controller_route_admin = {};
-const { adminLogin } = require('../controller/controller.model.admin');
+const controller = {};
+const env = require('../config/env');
 
-controller_route_admin.admin_api_login = (req, res) =>{
-    const result = adminLogin(req.body);
-    if (result.status == "success" && result.description == "password correct") {
+controller.api_admin_login = (req, res) => {
+    if (req.body.password == env.ADMIN_PASSWORD) {
         req.session.adminAuthenticated = true;
-        res.json(result);
+        res.json({ status: 'success', description: 'password correct' });
     } else {
         req.session.adminAuthenticated = false;
-        res.json(result);
+        res.json({ status: 'failed', description: 'password incorrect' });
     }
 };
 
-controller_route_admin.admin_api_logout = (req, res) =>{
-    delete req.session.adminAuthenticated;
-    res.redirect("/");
+controller.api_admin_isAuth = (req, res) => {
+    res.json({ status: req.session.adminAuthenticated });
 };
 
-module.exports = controller_route_admin;
+controller.adi_admin_logout = (req, res) => {
+    delete req.session.adminAuthenticated;
+    res.json({ status: 'success', description: 'authentication terminated' });
+};
+
+module.exports = controller;

@@ -1,6 +1,6 @@
 /**
  * -----------------------------------------------------------------------
- * Mongoose config to connect to MongoDB.
+ * Mongoose config to connect to MongoDB
  * -----------------------------------------------------------------------
  */
 const env = require('./env');
